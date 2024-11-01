@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
 
-<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="info.university.components.PrimaryController">
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="info.university.fxmlapplication.controllers.PrimaryController">
    <children>
       <Label text="Formulario de Registro Completo"/>
       <javafx.scene.control.TextField fx:id="nameField" promptText="Nombre"/>

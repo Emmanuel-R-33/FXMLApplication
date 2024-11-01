@@ -1,4 +1,4 @@
-module info.university.components {
+module info.university.fxmlapplication.controllers {
     requires javafx.controls;
     requires javafx.fxml;
 
