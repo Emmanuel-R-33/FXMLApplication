@@ -1,4 +1,5 @@
-info\university\components\SecondaryController.class
 module-info.class
-info\university\components\App.class
-info\university\components\PrimaryController.class
+info\university\fxmlapplication\controllers\PrimaryController.class
+info\university\fxmlapplication\fxml\util\FxmlLocation.class
+info\university\fxmlapplication\fxml\util\FxmlRelativePathBuilder.class
+info\university\fxmlapplication\App.class
