@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 public class StartWindow extends Window {
     
-    private static final String FIRST_VIEW = "Start";
+    private final String FIRST_VIEW = "Start";
     
     public StartWindow() {
         super();
@@ -23,8 +23,7 @@ public class StartWindow extends Window {
         
         scene = new Scene(loadFXML(FIRST_VIEW, FxmlLocation.VIEWS), stageWidth, stageHeight);
         
-        setStageX(screenMinX + (screenWidth / 2) - (stageWidth / 2));
-        setStageY(screenMinY + (screenHeight / 2) - (stageHeight / 2) - 50);
+        centerWindowIntoScreen();
         
         this.stage.setScene(scene);
         this.stage.show();

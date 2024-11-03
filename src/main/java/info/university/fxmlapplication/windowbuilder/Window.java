@@ -122,24 +122,33 @@ public abstract class Window extends Application {
         addMethodToListenerPosition();
     }
     
-    private void actualizarBoundsStage() {
+    private void updateBoundsStage() {
         this.stageWidth = stage.getWidth();
         this.stageHeight = stage.getHeight();
     }
     
-    private void actualizarPositionStage() {
+    private void updatePositionStage() {
         this.stageX = stage.getX();
         this.stageY = stage.getY();
     }
     
     private void addMethodToListenerBounds() {
-        stage.widthProperty().addListener((obs, odlVal, newVal) -> actualizarBoundsStage());
-        stage.heightProperty().addListener((obs, odlVal, newVal) -> actualizarBoundsStage());
+        stage.widthProperty().addListener((obs, odlVal, newVal) -> updateBoundsStage());
+        stage.heightProperty().addListener((obs, odlVal, newVal) -> updateBoundsStage());
     }
     
     private void addMethodToListenerPosition() {
-        stage.xProperty().addListener((obs, odlVal, newVal) -> actualizarPositionStage());
-        stage.yProperty().addListener((obs, odlVal, newVal) -> actualizarPositionStage());
+        stage.xProperty().addListener((obs, odlVal, newVal) -> updatePositionStage());
+        stage.yProperty().addListener((obs, odlVal, newVal) -> updatePositionStage());
+    }
+    
+    protected void centerWindowIntoScreen() {
+        centerWindowIntoScreen(50);
+    }
+    
+    protected void centerWindowIntoScreen(int upSpace) {
+        setStageX(screenMinX + (screenWidth / 2) - (stageWidth / 2));
+        setStageY(screenMinY + (screenHeight / 2) - (stageHeight / 2) - upSpace);
     }
 
     public void setStageWidth(double stageWidth) {
