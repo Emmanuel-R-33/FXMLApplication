@@ -15,42 +15,66 @@ import java.net.URL;
 import javafx.geometry.Rectangle2D;
 import javafx.stage.Screen;
 
+import lombok.Getter;
 /**
  * JavaFX Window
  */
 public abstract class Window extends Application {
     
-    protected Rectangle2D SCREEN_BOUNDS;
-    protected double SCREEN_MIN_X;
-    protected double SCREEN_MIN_Y;
-    protected double SCREEN_MAX_X;
-    protected double SCREEN_MAX_Y;
-    protected double SCREEN_WIDTH;
-    protected double SCREEN_HEIGHT;
-
-    protected Stage STAGE;
+    @Getter
+    protected Rectangle2D screenBounds;
+    
+    @Getter
+    protected double screenMinX;
+    
+    @Getter
+    protected double screenMinY;
+    
+    @Getter
+    protected double screenMaxX;
+    
+    @Getter
+    protected double screenMaxY;
+    
+    @Getter
+    protected double screenWidth;
+    
+    @Getter
+    protected double screenHeight;
+    
+    @Getter
+    protected Stage stage;
+    
+    @Getter
     protected Scene scene;
     
+    @Getter
     protected double stageWidth;
+    
+    @Getter
     protected double stageHeight;
+    
+    @Getter
     protected double stageX;
+    
+    @Getter
     protected double stageY;
 
     public Window() {
-        this.STAGE = null;
+        this.stage = null;
     }
     
     public Window initWindow() throws IOException {
-        if (this.STAGE == null) {
-            this.STAGE = new Stage();
-            start(STAGE);
+        if (this.stage == null) {
+            this.stage = new Stage();
+            start(stage);
         }
         return this;
     }
     
     @Override
     public void start(Stage stage) throws IOException {
-        this.STAGE = stage;
+        this.stage = stage;
         
         initScreenBounds();
     }
@@ -85,13 +109,13 @@ public abstract class Window extends Application {
         .filter(screen -> screen.getBounds().contains(mouseX, mouseY))
         .findFirst()
         .ifPresent(screen -> {
-            SCREEN_BOUNDS = screen.getVisualBounds();
-            SCREEN_MIN_X = (screen.getVisualBounds().getMinX());
-            SCREEN_MIN_Y = (screen.getVisualBounds().getMinY());
-            SCREEN_MAX_X = (screen.getVisualBounds().getMaxX());
-            SCREEN_MAX_Y = (screen.getVisualBounds().getMaxY());
-            SCREEN_WIDTH = SCREEN_BOUNDS.getWidth();
-            SCREEN_HEIGHT = SCREEN_BOUNDS.getHeight();
+            screenBounds = screen.getVisualBounds();
+            screenMinX = (screen.getVisualBounds().getMinX());
+            screenMinY = (screen.getVisualBounds().getMinY());
+            screenMaxX = (screen.getVisualBounds().getMaxX());
+            screenMaxY = (screen.getVisualBounds().getMaxY());
+            screenWidth = screenBounds.getWidth();
+            screenHeight = screenBounds.getHeight();
         });
         
         addMethodToListenerBounds();
@@ -99,103 +123,50 @@ public abstract class Window extends Application {
     }
     
     private void actualizarBoundsStage() {
-        this.stageWidth = STAGE.getWidth();
-        this.stageHeight = STAGE.getHeight();
+        this.stageWidth = stage.getWidth();
+        this.stageHeight = stage.getHeight();
     }
     
     private void actualizarPositionStage() {
-        this.stageX = STAGE.getX();
-        this.stageY = STAGE.getY();
+        this.stageX = stage.getX();
+        this.stageY = stage.getY();
     }
     
     private void addMethodToListenerBounds() {
-        STAGE.widthProperty().addListener((obs, odlVal, newVal) -> actualizarBoundsStage());
-        STAGE.heightProperty().addListener((obs, odlVal, newVal) -> actualizarBoundsStage());
+        stage.widthProperty().addListener((obs, odlVal, newVal) -> actualizarBoundsStage());
+        stage.heightProperty().addListener((obs, odlVal, newVal) -> actualizarBoundsStage());
     }
     
     private void addMethodToListenerPosition() {
-        STAGE.xProperty().addListener((obs, odlVal, newVal) -> actualizarPositionStage());
-        STAGE.yProperty().addListener((obs, odlVal, newVal) -> actualizarPositionStage());
+        stage.xProperty().addListener((obs, odlVal, newVal) -> actualizarPositionStage());
+        stage.yProperty().addListener((obs, odlVal, newVal) -> actualizarPositionStage());
     }
 
     public void setStageWidth(double stageWidth) {
         this.stageWidth = stageWidth;
         if (scene != null) {
-            STAGE.setWidth(this.stageWidth);
+            stage.setWidth(this.stageWidth);
         }
     }
 
     public void setStageHeight(double stageHeight) {
         this.stageHeight = stageHeight;
         if (scene != null) {
-            STAGE.setHeight(this.stageHeight);
+            stage.setHeight(this.stageHeight);
         }
-    }
-
-    public double getStageWidth() {
-        return stageWidth;
-    }
-
-    public double getStageHeight() {
-        return stageHeight;
     }
 
     public void setStageX(double xPosition) {
         this.stageX = xPosition;
         if (scene != null) {
-            STAGE.setX(this.stageX);
+            stage.setX(this.stageX);
         }
     }
     
     public void setStageY(double yPosition) {
         stageY = yPosition;
         if (scene != null) {
-            STAGE.setY(this.stageY);
+            stage.setY(this.stageY);
         }
     }
-    
-    public double getStageX() {
-        return stageX;
-    }
-
-    public double getStageY() {
-        return stageY;
-    }
-
-    public Rectangle2D getSCREEN_BOUNDS() {
-        return SCREEN_BOUNDS;
-    }
-
-    public double getSCREEN_MIN_X() {
-        return SCREEN_MIN_X;
-    }
-
-    public double getSCREEN_MIN_Y() {
-        return SCREEN_MIN_Y;
-    }
-
-    public double getSCREEN_MAX_X() {
-        return SCREEN_MAX_X;
-    }
-
-    public double getSCREEN_MAX_Y() {
-        return SCREEN_MAX_Y;
-    }
-
-    public double getSCREEN_WIDTH() {
-        return SCREEN_WIDTH;
-    }
-
-    public double getSCREEN_HEIGHT() {
-        return SCREEN_HEIGHT;
-    }
-
-    public Stage getStage() {
-        return STAGE;
-    }
-    
-    public Scene getScene() {
-        return scene;
-    }
-
 }

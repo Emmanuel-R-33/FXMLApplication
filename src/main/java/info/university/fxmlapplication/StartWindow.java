@@ -18,16 +18,16 @@ public class StartWindow extends Window {
     public void start(Stage stage) throws IOException {
         super.start(stage);
         
-        super.setStageWidth(SCREEN_WIDTH / 2);
-        super.setStageHeight(SCREEN_HEIGHT / 2);
+        setStageWidth(screenWidth / 2);
+        setStageHeight(screenHeight / 2);
         
         scene = new Scene(loadFXML(FIRST_VIEW, FxmlLocation.VIEWS), stageWidth, stageHeight);
         
-        super.setStageX(SCREEN_MIN_X + (SCREEN_WIDTH / 2) - (stageWidth / 2));
-        super.setStageY(SCREEN_MIN_Y + (SCREEN_HEIGHT / 2) - (stageHeight / 2) - 50);
+        setStageX(screenMinX + (screenWidth / 2) - (stageWidth / 2));
+        setStageY(screenMinY + (screenHeight / 2) - (stageHeight / 2) - 50);
         
-        stage.setScene(scene);
-        stage.show();
+        this.stage.setScene(scene);
+        this.stage.show();
     }
     
     public static void main(String[] args) {

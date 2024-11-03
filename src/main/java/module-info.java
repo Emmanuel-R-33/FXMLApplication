@@ -3,6 +3,7 @@ module info.university.fxmlapplication {
     requires javafx.fxml;
     requires java.desktop;
     requires java.logging;
+    requires lombok;
     
     // Abrir el paquete principal para permitir la reflexión de FXMLLoader
     opens info.university.fxmlapplication to javafx.fxml;
