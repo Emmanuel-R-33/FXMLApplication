@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
 
 <VBox 
     alignment="CENTER" 
@@ -10,6 +11,6 @@
     fx:controller="info.university.fxmlapplication.controllers.PrimaryController"
 >
    <children>
-      
+      <Button  fx:id="customButton" text="Click me!" onAction="#handleClick"/>
    </children>
 </VBox>

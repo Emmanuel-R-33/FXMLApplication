@@ -2,4 +2,5 @@ module-info.class
 info\university\fxmlapplication\controllers\PrimaryController.class
 info\university\fxmlapplication\fxml\util\FxmlLocation.class
 info\university\fxmlapplication\fxml\util\FxmlRelativePathBuilder.class
-info\university\fxmlapplication\App.class
+info\university\fxmlapplication\StartWindow.class
+info\university\fxmlapplication\windowbuilder\Window.class
